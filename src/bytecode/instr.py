@@ -958,7 +958,10 @@ class Instr(BaseInstr[InstrArg]):
                     isinstance(arg, tuple)
                     and len(arg) == 2
                     and isinstance(arg[0], bool)
-                    and isinstance(arg[1], str)
+                    and (
+                        isinstance(arg[1], str)
+                        or (opcode in FORMAT_VALUE_OPS and isinstance(arg[1], FormatValue))
+                    )
                 ):
                     raise TypeError(
                         "operation %s argument must be a tuple[bool, str | FormatValue], "
@@ -986,7 +989,7 @@ class Instr(BaseInstr[InstrArg]):
                     and isinstance(arg[1], (str, CellVar))
                 ):
                     raise TypeError(
-                        "operation %s argument must be a tuple[str, str], "
+                        "operation %s argument must be a tuple[str | CellVar, str | CellVar], "
                         "got %s (value=%s)" % (name, type(arg).__name__, str(arg))
                     )
 
