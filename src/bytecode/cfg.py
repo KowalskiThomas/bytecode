@@ -64,15 +64,15 @@ class BasicBlock(_bytecode._InstrList[Union[Instr, SetLineno, TryBegin, TryEnd]]
 
                 if not isinstance(instr.arg, BasicBlock):
                     raise ValueError(
-                        "Jump target must a BasicBlock, got %s",
-                        type(instr.arg).__name__,
+                        "Jump target must be a BasicBlock, got %s"
+                        % type(instr.arg).__name__
                     )
 
             if isinstance(instr, TryBegin):
                 if not isinstance(instr.target, BasicBlock):
                     raise ValueError(
-                        "TryBegin target must a BasicBlock, got %s",
-                        type(instr.target).__name__,
+                        "TryBegin target must be a BasicBlock, got %s"
+                        % type(instr.target).__name__
                     )
 
             yield instr

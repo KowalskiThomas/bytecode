@@ -254,7 +254,7 @@ class ExceptionTableEntry:
             f"stop_offset={self.stop_offset}, "
             f"target={self.target}, "
             f"stack_depth={self.stack_depth}, "
-            f"push_lasti={self.push_lasti}"
+            f"push_lasti={self.push_lasti})"
         )
 
 
