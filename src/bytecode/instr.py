@@ -1093,12 +1093,12 @@ class Instr(BaseInstr[InstrArg]):
                         arg = FormatValue(arg)
                     except Exception as e:
                         raise TypeError(
-                            "operation %s argument must be a FormatValue] "
+                            "operation %s argument must be a FormatValue,"
                             "got %s (value=%s)" % (name, type(arg).__name__, str(arg))
                         ) from e
                 else:
                     raise TypeError(
-                        "operation %s argument must be a FormatValue] "
+                        "operation %s argument must be a FormatValue,"
                         "got %s (value=%s)" % (name, type(arg).__name__, str(arg))
                     )
 

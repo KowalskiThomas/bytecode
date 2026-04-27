@@ -311,6 +311,7 @@ class ConcreteBytecode(_bytecode._BaseBytecodeList[Union[ConcreteInstr, SetLinen
             self.consts = bytecode.consts
             self.names = bytecode.names
             self.varnames = bytecode.varnames
+            self.exception_table = bytecode.exception_table
 
     def __repr__(self) -> str:
         return "<ConcreteBytecode instr#=%s>" % len(self)
@@ -1157,8 +1158,8 @@ class _ConvertBytecodeToConcrete:
                     ), arg
                     if isinstance(arg[1], str):
                         index = self.add(self.names, arg[1])
-                    elif isinstance(arg, FormatValue):
-                        index = int(arg)
+                    elif isinstance(arg[1], FormatValue):
+                        index = int(arg[1])
                     else:
                         assert False, arg  # noqa
                     c_arg = int(arg[0]) + (index << 1)
